@@ -194,4 +194,221 @@ Unlike traditional log viewers, ThreatLens combines multiple stages of the incid
 
 ---
 
-> **Next:** Part 2 will cover the Technology Stack, System Architecture (with Mermaid diagrams), Application Workflow, and the detailed Project Modules section with explanations of how each component works.
+# 💻 Technology Stack
+
+| Category | Technology |
+|----------|------------|
+| **Frontend** | HTML5, CSS3, JavaScript |
+| **Backend** | Node.js |
+| **Framework** | Express.js |
+| **Database** | MySQL |
+| **ORM** | Prisma ORM |
+| **Authentication** | JWT, bcrypt |
+| **File Upload** | Multer |
+| **Charts & Analytics** | Chart.js |
+| **Graph Visualization** | Cytoscape.js |
+| **Threat Intelligence** | VirusTotal API |
+| **Version Control** | Git & GitHub |
+
+---
+
+# 🏗️ System Architecture
+
+ThreatLens follows a modular three-tier architecture that separates the presentation layer, application logic, and database. This design improves maintainability, scalability, and security while allowing each module to evolve independently.
+
+```mermaid
+flowchart LR
+
+A[Frontend UI]
+B[Express REST API]
+C[Authentication]
+D[Upload Service]
+E[Parser Engine]
+F[Detection Engine]
+G[Risk Engine]
+H[Threat Intelligence]
+I[MITRE Mapper]
+J[Dashboard Services]
+K[MySQL Database]
+
+A --> B
+B --> C
+B --> D
+D --> E
+E --> F
+F --> G
+G --> H
+H --> I
+I --> J
+C --> K
+D --> K
+J --> K
+```
+
+---
+
+# 🔄 Application Workflow
+
+ThreatLens processes uploaded logs through multiple analysis stages before presenting actionable security insights to the analyst.
+
+```mermaid
+flowchart TD
+
+A[User Login]
+B[Upload Security Log]
+C[Log Parsing]
+D[Detection Rules]
+E[Risk Score]
+F[VirusTotal Lookup]
+G[MITRE ATT&CK Mapping]
+H[Alert Generation]
+I[Dashboard]
+J[Incident Investigation]
+K[Security Report]
+
+A --> B
+B --> C
+C --> D
+D --> E
+E --> F
+F --> G
+G --> H
+H --> I
+H --> J
+J --> K
+```
+
+---
+
+# 🧩 Project Modules
+
+## 🔐 1. Authentication Module
+
+**Purpose**
+
+Provides secure access to the platform using JSON Web Tokens (JWT).
+
+### Features
+
+- User Registration
+- Secure Login
+- Password Hashing using bcrypt
+- JWT Token Generation
+- Protected Routes
+- User Session Validation
+
+### Security Measures
+
+- Passwords are never stored in plain text.
+- Every protected API validates JWT tokens before granting access.
+- Each user can only access their own uploads, alerts, and reports.
+
+---
+
+## 📁 2. Log Upload Module
+
+![Upload Module](screenshots/upload.png)
+
+The upload module enables analysts to securely submit security logs for automated analysis.
+
+### Features
+
+- Drag-and-drop interface
+- Multiple log format support
+- Upload history
+- Processing status tracking
+- File validation
+- User-specific uploads
+
+Supported formats include:
+
+- `.log`
+- `.txt`
+- `.json`
+- `.csv`
+
+Uploaded files are stored securely before being passed to the parsing engine.
+
+---
+
+## ⚙️ 3. Log Parsing Engine
+
+Once uploaded, logs are processed by the parser engine.
+
+The parser extracts relevant event information including:
+
+- Timestamp
+- Source IP
+- Destination IP
+- HTTP Requests
+- User Agent
+- Request URI
+- Event Type
+
+This structured data becomes the foundation for threat detection and investigation.
+
+---
+
+## 🚨 4. Detection Engine
+
+ThreatLens implements a modular rule-based detection engine capable of identifying suspicious activity from parsed log events.
+
+### Detection Rules
+
+| Rule | Purpose |
+|------|---------|
+| SQL Injection | Detect malicious SQL payloads |
+| Cross-Site Scripting | Detect injected JavaScript |
+| Directory Traversal | Detect path traversal attempts |
+| Suspicious User-Agent | Identify malicious scanners |
+| Sensitive File Access | Detect access to protected resources |
+
+Every rule generates structured detections containing severity, description, affected assets, and evidence.
+
+---
+
+## 📈 5. Dynamic Risk Scoring
+
+Each alert is assigned a dynamic risk score based on multiple security factors.
+
+Risk calculation considers:
+
+- Detection severity
+- Number of indicators
+- Threat intelligence reputation
+- Attack frequency
+- MITRE ATT&CK mapping
+
+This enables analysts to prioritize the most critical incidents first.
+
+---
+
+## 🌐 6. Threat Intelligence Integration
+
+ThreatLens enriches detected indicators using VirusTotal.
+
+Threat intelligence provides:
+
+- IP reputation
+- Malicious detection count
+- Community reputation
+- Suspicious activity indicators
+
+External enrichment improves investigation quality by providing additional context for each security event.
+
+---
+
+## 🎯 7. MITRE ATT&CK Mapping
+
+Detected attacks are automatically associated with relevant MITRE ATT&CK tactics and techniques.
+
+This mapping helps analysts understand:
+
+- Attacker objectives
+- Attack progression
+- Techniques used
+- Defensive recommendations
+
+MITRE mapping also provides standardized terminology for reporting and investigation.
+
+---
