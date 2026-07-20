@@ -307,7 +307,8 @@ Provides secure access to the platform using JSON Web Tokens (JWT).
 
 ## 📁 2. Log Upload Module
 
-![Upload Module](screenshots/upload.png)
+<img width="1920" height="1200" alt="Screenshot 2026-07-20 114101" src="https://github.com/user-attachments/assets/e4efeeca-dfbe-4953-ac67-36165d650a44" />
+
 
 The upload module enables analysts to securely submit security logs for automated analysis.
 
@@ -415,8 +416,6 @@ MITRE mapping also provides standardized terminology for reporting and investiga
 
 ## 📊 8. Security Dashboard
 
-![Dashboard](screenshots/dashboard.png)
-
 The Security Dashboard serves as the central monitoring interface of ThreatLens, providing analysts with an overview of platform activity and detected threats.
 
 ### Dashboard Highlights
@@ -437,8 +436,6 @@ The dashboard is powered by REST APIs that retrieve real-time analytics from the
 
 ## 🚨 9. Alert Management
 
-![Alerts](screenshots/alerts.png)
-
 ThreatLens automatically generates alerts whenever suspicious activity is detected during log analysis.
 
 Each alert includes:
@@ -457,8 +454,6 @@ Analysts can review alerts, filter incidents, and investigate suspicious activit
 
 ## 🔍 10. Incident Investigation
 
-![Incident Investigation](screenshots/incident-overview.png)
-
 The Incident Investigation module consolidates all relevant information required to analyze a security event.
 
 ### Investigation View
@@ -476,8 +471,6 @@ This enables analysts to move from detection to investigation without switching 
 ---
 
 ## 🕸️ 11. IOC Relationship Graph
-
-![IOC Graph](screenshots/incident-graph.png)
 
 ThreatLens visualizes relationships between Indicators of Compromise (IOCs) using an interactive graph.
 
